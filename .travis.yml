@@ -1,0 +1,10 @@
+sudo: required
+services:
+ - docker
+language: cpp
+compiler: gcc
+ 
+before_install:
+ - docker pull trzeci/emscripten:sdk-tag-1.35.4-64bit
+
+script: ./install_dependencies.sh && docker run -v $(pwd):/src trzeci/emscripten:sdk-tag-1.35.4-64bit ./build_emscripten.sh
